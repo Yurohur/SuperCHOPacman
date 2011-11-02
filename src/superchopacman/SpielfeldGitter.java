@@ -70,7 +70,7 @@ public class SpielfeldGitter {
       }
     }
     /*
-    for (int i = 0; i < vKaestchen; i++)
+    for (int i = 0; i < vBier; i++)
     for (int k = 0; k < hKaestchen; k++)
     System.out.println(a[i][k]);
      */
