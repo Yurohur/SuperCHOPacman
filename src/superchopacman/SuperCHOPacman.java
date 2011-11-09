@@ -8,12 +8,10 @@ import java.util.ArrayList;
  * @author Ole Schwiegert
  */
 public class SuperCHOPacman {
-    
-    private static ArrayList<Pille> pillen = new ArrayList<Pille>();
 
     public static void main(String[] args) {
         Spielfeld feld = new Spielfeld();
-        Runner runner = new Runner(pillen, feld);
+        Runner runner = new Runner(feld.getPillen(), feld);
         feld.addActor(runner, new Location(5,5));
         feld.addKeyListener(runner);
         feld.addActor(new Ghost(runner,feld), new Location (2,2));
