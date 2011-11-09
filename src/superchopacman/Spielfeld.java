@@ -4,6 +4,7 @@ import ch.aplu.jgamegrid.GGBackground;
 import ch.aplu.jgamegrid.GameGrid;
 import ch.aplu.jgamegrid.Location;
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,6 +14,8 @@ public class Spielfeld extends GameGrid {
 
     public final static int vKaestchen = 30;
     public final static int hKaestchen = 30;
+    private ArrayList<Pille> pillen = new ArrayList<Pille>();
+    private SpielfeldGitter feld;
 
     public Spielfeld() {
         super(hKaestchen, vKaestchen, 20, Color.white, "sprites/bg.jpg", false);
@@ -22,7 +25,7 @@ public class Spielfeld extends GameGrid {
     }
 
     private void drawGrid(GGBackground bg) {
-        SpielfeldGitter feld = new SpielfeldGitter(this);
+        feld = new SpielfeldGitter(this);
         for (int y = 0; y < vKaestchen; y++) {
             for (int x = 0; x < hKaestchen; x++) {
                 Location location = new Location(x, y);
@@ -32,5 +35,9 @@ public class Spielfeld extends GameGrid {
                 }                
             }
         }
+    }
+    
+    public ArrayList<Pille> getPillen() {
+        return feld.getPillen();
     }
 }

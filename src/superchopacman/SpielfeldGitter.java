@@ -5,6 +5,7 @@
 package superchopacman;
 
 import ch.aplu.jgamegrid.Location;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,7 @@ public class SpielfeldGitter {
   public final static int vKaestchen = 30;
   public final static int hKaestchen = 30;
   public int[][] a = new int[hKaestchen][vKaestchen];
+  private ArrayList<Pille> pillen = new ArrayList<Pille>();
 
   public SpielfeldGitter(Spielfeld spielfeld) {
     String Labyrinth =
@@ -65,8 +67,12 @@ public class SpielfeldGitter {
       if (c == '.') {
         int zeile = i/15;
         int spalte = i%15;
-        spielfeld.addActor(new Pille(), new Location(spalte,zeile));
-        spielfeld.addActor(new Pille(), new Location(29-spalte,30-zeile));
+        Pille ac1 = new Pille();
+        Pille ac2 = new Pille();
+        spielfeld.addActor(ac1, new Location(spalte,zeile));
+        spielfeld.addActor(ac2, new Location(29-spalte,30-zeile));
+        pillen.add(ac1);
+        pillen.add(ac2);
       }
     }
     /*
@@ -88,5 +94,9 @@ public class SpielfeldGitter {
       return 1;
     }
     return -1;
+  }
+  
+  public ArrayList<Pille> getPillen() {
+      return pillen;
   }
 }
