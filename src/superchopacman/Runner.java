@@ -103,10 +103,13 @@ public class Runner extends Actor implements GGKeyListener {
         
     }
     
+    /**
+     * Diese Funktion wird vom Ghost aufgerufen, wenn sich Ghost und Runner
+     * auf der selben Location befinden.
+     */
     public void hurt() {
         lifes -= 1;
         if(lifes<=0) {
-            removeSelf();
             feld.stopGameThread();
         }
     }

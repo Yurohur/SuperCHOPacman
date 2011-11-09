@@ -1,8 +1,6 @@
 package superchopacman;
 
 import ch.aplu.jgamegrid.Location;
-import java.util.ArrayList;
-
 /**
  *
  * @author Ole Schwiegert

@@ -1,11 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package superchopacman;
 
 import ch.aplu.jgamegrid.Actor;
-import ch.aplu.jgamegrid.Location.CompassDirection;
 import java.awt.Color;
 import ch.aplu.jgamegrid.Location;
 
