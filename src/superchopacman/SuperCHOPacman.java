@@ -13,10 +13,6 @@ public class SuperCHOPacman {
 
     public static void main(String[] args) {
         Spielfeld feld = new Spielfeld();
-        pillen.add(new Pille());
-        pillen.add(new Pille());
-        feld.addActor(pillen.get(0), new Location(7,7));
-        feld.addActor(pillen.get(1), new Location(8,9));
         Runner runner = new Runner(pillen, feld);
         feld.addActor(runner, new Location(5,5));
         feld.addKeyListener(runner);
