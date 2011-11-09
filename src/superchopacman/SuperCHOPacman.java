@@ -19,7 +19,7 @@ public class SuperCHOPacman {
         feld.addActor(new Ghost(runner,feld), new Location (2,2));
         feld.addActor(new Ghost(runner,feld), new Location (11,2));
         feld.addActor(new Ghost(runner,feld), new Location (27,28));
-        feld.addActor(new Ghost(runner,feld), new Location (2,28));
+        feld.addActor(new Ghostverfolger(runner,feld), new Location (2,28));
         feld.addActor(new Ghostverfolger(runner, feld), new Location (3,2));
         feld.doRun();
         feld.show();
