@@ -59,6 +59,9 @@ public class Ghost extends Actor {
       move();
 
     }
+    else {
+        Richtung();
+    }
   }
 
   /**
