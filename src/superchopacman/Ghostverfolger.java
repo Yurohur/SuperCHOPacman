@@ -16,7 +16,7 @@ public class Ghostverfolger extends Actor {
   private int zaehler = 0;
 
   public Ghostverfolger(Runner runner, Spielfeld feld) {
-    super(false, "sprites/feuer.jpg");
+    super(false, "sprites/ghostverfolger.png");
     this.runner = runner;
     this.feld = feld;
   }
