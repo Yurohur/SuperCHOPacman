@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package superchopacman;
 
 import ch.aplu.jgamegrid.Actor;
@@ -13,13 +9,13 @@ import ch.aplu.jgamegrid.Location;
  *
  * @author phillihe
  */
-public class Ghost extends Actor {
+public class Ghostverfolger extends Actor {
 
   private Runner runner;
   private Spielfeld feld;
   private int zaehler = 0;
 
-  public Ghost(Runner runner, Spielfeld feld) {
+  public Ghostverfolger(Runner runner, Spielfeld feld) {
     super(false, "sprites/feuer.jpg");
     this.runner = runner;
     this.feld = feld;
@@ -34,42 +30,22 @@ public class Ghost extends Actor {
     }
   }
 
-  /**
-   * Berechnet zufällig eine der vier Himmelsrichtungen
-   */
-  public void Richtung() {
-    int random = (int) Math.floor(Math.random() * 4);
-    switch (random) {
-      case 0:
-        setDirection(Location.NORTH);
-        break;
-      case 1:
-        setDirection(Location.EAST);
-        break;
-      case 2:
-        setDirection(Location.SOUTH);
-        break;
-      case 3:
-        setDirection(Location.WEST);
-        break;
-    }
+  public CompassDirection verfolger() {
+    Location pac = runner.getLocation();
+    CompassDirection verfolgungsrichtung = this.getLocation().get4CompassDirectionTo(pac);
+    return verfolgungsrichtung;
   }
 
-  
-
   public void movement() {
+  CompassDirection d= verfolger();
+  setDirection(d);
 
-
-    if (canMove(getLocation().getNeighbourLocation(getDirection()))) {
+    if (canMove(getLocation().getNeighbourLocation(verfolger()))) {
       move();
 
     }
   }
 
-  /**
-   * Vergleicht die Positionen vom Ghost und Runner und zieht dem Runner ein Leben wenn die
-   * Positionen übereinstimmen
-   */
   public void pacmanfressen() {
     Location loc = this.getLocation();
     Location pac = runner.getLocation();
@@ -79,13 +55,13 @@ public class Ghost extends Actor {
     }
   }
 
-  @Override
+ 
+ @Override
   public void act() {
     movement();
     zaehler += 1;
     pacmanfressen();
     if (zaehler == 5) {
-      Richtung();
       zaehler = 0;
     }
 
