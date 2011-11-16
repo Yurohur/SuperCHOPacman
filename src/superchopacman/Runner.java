@@ -19,6 +19,7 @@ public class Runner extends Actor implements GGKeyListener {
     private int lifes = 3;
     private Spielfeld feld;
     private ArrayList<Pille> pillen = new ArrayList<Pille>();
+    public int maxPillen = pillen.size()+1;
     
     /**
      * Konstruktor der Klasse Runner. Setzt das Spriteimage und deklariert die

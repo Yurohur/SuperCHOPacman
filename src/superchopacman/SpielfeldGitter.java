@@ -13,6 +13,7 @@ public class SpielfeldGitter {
   public final static int hKaestchen = 30;
   public int[][] a = new int[hKaestchen][vKaestchen];
   private ArrayList<Pille> pillen = new ArrayList<Pille>();
+  
 
   public SpielfeldGitter(Spielfeld spielfeld) {
    String Labyrinth =

@@ -14,7 +14,6 @@ public class Spielfeld extends GameGrid {
 
     public final static int vKaestchen = 30;
     public final static int hKaestchen = 30;
-    private ArrayList<Pille> pillen = new ArrayList<Pille>();
     private SpielfeldGitter feld;
 
     public Spielfeld() {
