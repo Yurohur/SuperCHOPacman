@@ -10,12 +10,12 @@ import ch.aplu.jgamegrid.Location;
  */
 public class Ghost extends Actor {
 
-  private Runner runner;
-  private Spielfeld feld;
-  private int zaehler = 0;
+  protected Runner runner;
+  protected Spielfeld feld;
+  protected int zaehler = 0;
 
-  public Ghost(Runner runner, Spielfeld feld) {
-    super(false, "sprites/feuer.jpg");
+  public Ghost(Runner runner, Spielfeld feld, String path) {
+    super(false, path );
     this.runner = runner;
     this.feld = feld;
   }

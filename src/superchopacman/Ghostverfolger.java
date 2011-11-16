@@ -9,62 +9,35 @@ import ch.aplu.jgamegrid.Location;
  *
  * @author phillihe
  */
-public class Ghostverfolger extends Actor {
-
-  private Runner runner;
-  private Spielfeld feld;
-  private int zaehler = 0;
+public class Ghostverfolger extends Ghost {
 
   public Ghostverfolger(Runner runner, Spielfeld feld) {
-    super(false, "sprites/ghostverfolger.png");
+    super(runner, feld, "sprites/ghostverfolger.png");
     this.runner = runner;
     this.feld = feld;
   }
 
-  public boolean canMove(Location loc) {
-    Color col = getBackground().getColor(loc);
-    if (col.equals(Color.black)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
+ 
   public CompassDirection verfolger() {
     Location pac = runner.getLocation();
     CompassDirection verfolgungsrichtung = this.getLocation().get4CompassDirectionTo(pac);
     return verfolgungsrichtung;
   }
 
+    @Override
   public void movement() {
   CompassDirection d= verfolger();
-  setDirection(d);
+  
 
     if (canMove(getLocation().getNeighbourLocation(verfolger()))) {
-      move();
-
+      setDirection(d);
+        move();
+   
+    }
+    else {
+        Richtung();
     }
   }
 
-  public void pacmanfressen() {
-    Location loc = this.getLocation();
-    Location pac = runner.getLocation();
-    if (loc.equals(pac)) {
-      runner.hurt();
-
-    }
-  }
-
- 
- @Override
-  public void act() {
-    movement();
-    zaehler += 1;
-    pacmanfressen();
-    if (zaehler == 5) {
-      zaehler = 0;
-    }
-
 
   }
-}
