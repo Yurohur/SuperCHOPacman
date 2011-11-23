@@ -24,7 +24,7 @@ public class Spielfeld extends GameGrid {
     }
 
     private void drawGrid(GGBackground bg) {
-        feld = new SpielfeldGitter(this);
+        feld = new SpielfeldGitter(this,1);
         for (int y = 0; y < vKaestchen; y++) {
             for (int x = 0; x < hKaestchen; x++) {
                 Location location = new Location(x, y);
