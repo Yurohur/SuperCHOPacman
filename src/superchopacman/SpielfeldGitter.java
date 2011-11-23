@@ -15,17 +15,17 @@ public class SpielfeldGitter {
     public final static int hKaestchen = 30;
     public int[][] a = new int[hKaestchen][vKaestchen];
     private ArrayList<Pille> pillen = new ArrayList<Pille>();
-
     private String Labyrinth;
+    private Runner runner;
 
     public SpielfeldGitter(Spielfeld spielfeld, int auswahl, GGBackground bg) {
 
-        
+
         if (auswahl == 1) {
             Labyrinth =
                     "xxxxxxxxxxxxxxx" + // 0
                     "xxxxxxxxxxxxxxx" + // 1
-                    "xx............x" + // 2
+                    "xx..R.........x" + // 2
                     "xx.xxxx.xxxxx.x" + // 3
                     "xx.xxxx.xxxxx.x" + // 4
                     "xx.xxxx.xxxxx.x" + // 5
@@ -47,7 +47,7 @@ public class SpielfeldGitter {
                     "xx............x" + // 21
                     "xx.xxxx.xx.xxxx" + // 22
                     "xx.xxxx.xx.xxxx" + // 23
-                    "xx............." + // 24
+                    "xx....G........" + // 24
                     "xx.xxxx.xxxxx.x" + // 25
                     "xx.xxxx.xxxxx.x" + // 26
                     "xx.xxxx.xxxxx.x" + // 27
@@ -106,15 +106,27 @@ public class SpielfeldGitter {
         //Fügt Pillen ein
         for (int i = 0; i < Labyrinth.length(); i++) {
             char c = Labyrinth.charAt(i);
+            int zeile = i / 15;
+            int spalte = i % 15;
             if (c == '.') {
-                int zeile = i / 15;
-                int spalte = i % 15;
                 Pille ac1 = new Pille();
                 Pille ac2 = new Pille();
                 spielfeld.addActor(ac1, new Location(spalte, zeile));
                 spielfeld.addActor(ac2, new Location(29 - spalte, zeile));
                 pillen.add(ac1);
                 pillen.add(ac2);
+            }
+            if (c == 'R') {
+                Pille p = new Pille();
+                pillen.add(p);
+                runner = new Runner(pillen, spielfeld);
+                spielfeld.addKeyListener(runner);
+                spielfeld.addActor(runner, new Location(spalte, zeile));
+                spielfeld.addActor(p, new Location(29 - spalte, zeile));
+            }
+            if (c == 'G') {
+                spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/feuer.jpg"), new Location(spalte, zeile));
+                spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/feuer.jpg"), new Location(29 - spalte, zeile));
             }
         }
 
@@ -123,14 +135,12 @@ public class SpielfeldGitter {
             for (int x = 0; x < hKaestchen; x++) {
                 Location location = new Location(x, y);
                 int cell = getCell(location);
-                if (cell == 1) {
+                if (cell == 1 || cell == 2 || cell == 3) {
                     bg.fillCell(location, Color.black);
                 }
             }
         }
     }
-
-    
 
     private int toInt(char c) {
         if (c == 'x') {
@@ -139,10 +149,16 @@ public class SpielfeldGitter {
         if (c == '.') {
             return 1;
         }
+        if (c == 'R') {
+            return 2;
+        }
+        if (c == 'G') {
+            return 3;
+        }
         return -1;
     }
 
-    public int getCell(Location location) {
+    public final int getCell(Location location) {
         return a[location.y][location.x];
     }
 
