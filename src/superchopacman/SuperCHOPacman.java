@@ -9,7 +9,7 @@ public class SuperCHOPacman {
 
     public static void main(String[] args) {
         String path = "sprites/feuer.jpg";
-        Spielfeld feld = new Spielfeld();
+        Spielfeld feld = new Spielfeld(1);
         Runner runner = new Runner(feld.getPillen(), feld);
         feld.addActor(runner, new Location(16,12));
         feld.addKeyListener(runner);

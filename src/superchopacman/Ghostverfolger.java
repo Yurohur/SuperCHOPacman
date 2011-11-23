@@ -1,8 +1,6 @@
 package superchopacman;
 
-import ch.aplu.jgamegrid.Actor;
 import ch.aplu.jgamegrid.Location.CompassDirection;
-import java.awt.Color;
 import ch.aplu.jgamegrid.Location;
 
 /**

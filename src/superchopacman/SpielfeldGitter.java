@@ -1,6 +1,8 @@
 package superchopacman;
 
+import ch.aplu.jgamegrid.GGBackground;
 import ch.aplu.jgamegrid.Location;
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -13,9 +15,12 @@ public class SpielfeldGitter {
     public final static int hKaestchen = 30;
     public int[][] a = new int[hKaestchen][vKaestchen];
     private ArrayList<Pille> pillen = new ArrayList<Pille>();
+
     private String Labyrinth;
 
-    public SpielfeldGitter(Spielfeld spielfeld, int auswahl) {
+    public SpielfeldGitter(Spielfeld spielfeld, int auswahl, GGBackground bg) {
+
+        
         if (auswahl == 1) {
             Labyrinth =
                     "xxxxxxxxxxxxxxx" + // 0
@@ -89,6 +94,7 @@ public class SpielfeldGitter {
 
 
 
+        //Konvertiert String in ArrayList
         for (int i = 0; i < vKaestchen; i++) {
             for (int k = 0; k < hKaestchen / 2; k++) {
                 a[i][k] = toInt(Labyrinth.charAt(15 * i + k));
@@ -97,6 +103,7 @@ public class SpielfeldGitter {
                 a[i][k] = toInt(Labyrinth.charAt(15 * i + (29 - k)));
             }
         }
+        //Fügt Pillen ein
         for (int i = 0; i < Labyrinth.length(); i++) {
             char c = Labyrinth.charAt(i);
             if (c == '.') {
@@ -110,16 +117,20 @@ public class SpielfeldGitter {
                 pillen.add(ac2);
             }
         }
-        /*
-        for (int i = 0; i < vKaestchen; i++)
-        for (int k = 0; k < hKaestchen; k++)
-        System.out.println(a[i][k]);
-         */
+
+        //Malt den schwarzen Boden
+        for (int y = 0; y < vKaestchen; y++) {
+            for (int x = 0; x < hKaestchen; x++) {
+                Location location = new Location(x, y);
+                int cell = getCell(location);
+                if (cell == 1) {
+                    bg.fillCell(location, Color.black);
+                }
+            }
+        }
     }
 
-    public int getCell(Location location) {
-        return a[location.y][location.x];
-    }
+    
 
     private int toInt(char c) {
         if (c == 'x') {
@@ -129,6 +140,10 @@ public class SpielfeldGitter {
             return 1;
         }
         return -1;
+    }
+
+    public int getCell(Location location) {
+        return a[location.y][location.x];
     }
 
     public ArrayList<Pille> getPillen() {
