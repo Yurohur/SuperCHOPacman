@@ -38,7 +38,7 @@ public class SpielfeldGitter {
                     "x.xxx.x.xx....." + // 12
                     "x.xxx.x.xx.xxxx" + // 13
                     "x.xxx.x.xx.xxxx" + // 14
-                    "x..........xxxx" + // 15
+                    "xV.........xxxx" + // 15
                     "x.xxx.x.xx.xxxx" + // 16
                     "x.xxx.x.xx.xxxx" + // 17
                     "x.xxx.x.xx....." + // 18
@@ -102,13 +102,13 @@ public class SpielfeldGitter {
             for (int k = hKaestchen / 2; k < hKaestchen; k++) {
                 a[i][k] = toInt(Labyrinth.charAt(15 * i + (29 - k)));
             }
-        }
-        //Fügt Pillen ein
+        }        
         for (int i = 0; i < Labyrinth.length(); i++) {
             char c = Labyrinth.charAt(i);
             int zeile = i / 15;
             int spalte = i % 15;
-            if (c == '.') {
+            //Fügt Pillen ein
+            if (c == '.' || c == 'G' || c == 'V') {
                 Pille ac1 = new Pille();
                 Pille ac2 = new Pille();
                 spielfeld.addActor(ac1, new Location(spalte, zeile));
@@ -116,6 +116,7 @@ public class SpielfeldGitter {
                 pillen.add(ac1);
                 pillen.add(ac2);
             }
+            //Fügt den Runner ein
             if (c == 'R') {
                 Pille p = new Pille();
                 pillen.add(p);
@@ -124,9 +125,14 @@ public class SpielfeldGitter {
                 spielfeld.addActor(runner, new Location(spalte, zeile));
                 spielfeld.addActor(p, new Location(29 - spalte, zeile));
             }
+            //Fügt den zufällig laufenden Ghost ein
             if (c == 'G') {
                 spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/feuer.jpg"), new Location(spalte, zeile));
                 spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/feuer.jpg"), new Location(29 - spalte, zeile));
+            }
+            if (c == 'V') {
+                spielfeld.addActor(new Ghostverfolger(runner, spielfeld), new Location(spalte, zeile));
+                spielfeld.addActor(new Ghostverfolger(runner, spielfeld), new Location(29 - spalte, zeile));
             }
         }
 
@@ -135,7 +141,7 @@ public class SpielfeldGitter {
             for (int x = 0; x < hKaestchen; x++) {
                 Location location = new Location(x, y);
                 int cell = getCell(location);
-                if (cell == 1 || cell == 2 || cell == 3) {
+                if (cell == 1 || cell == 2 || cell == 3 || cell == 4) {
                     bg.fillCell(location, Color.black);
                 }
             }
@@ -154,6 +160,9 @@ public class SpielfeldGitter {
         }
         if (c == 'G') {
             return 3;
+        }
+        if (c == 'V') {
+            return 4;
         }
         return -1;
     }
