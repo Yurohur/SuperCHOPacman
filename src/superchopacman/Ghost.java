@@ -79,9 +79,9 @@ public class Ghost extends Actor {
 
   @Override
   public void act() {
-    movement();
     zaehler += 1;
     pacmanfressen();
+    movement();
     if (zaehler == 5) {
       Richtung();
       zaehler = 0;
