@@ -136,6 +136,7 @@ public class Runner extends Actor implements GGKeyListener {
         fressVersuch();
         System.out.println("Highscore:"+nGefressen);
         System.out.println("Leben:"+lifes);
+        feld.setTitle("SuperCHOPacman  Highscore: " + nGefressen + "  Leben: " + lifes);
     }
     
 }
