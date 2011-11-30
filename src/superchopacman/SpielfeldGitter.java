@@ -22,10 +22,10 @@ public class SpielfeldGitter {
 
 
         if (auswahl == 1) {
-            Labyrinth = LKonstanten.Labyrinth1;                    
+            Labyrinth = LKonstanten.Labyrinth1();                    
         } 
         else if (auswahl == 2) {
-            Labyrinth = LKonstanten.Labyrinth2;                 
+            Labyrinth = LKonstanten.Labyrinth2();                 
         }
 
 
