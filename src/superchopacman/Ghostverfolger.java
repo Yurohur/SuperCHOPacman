@@ -22,8 +22,8 @@ public class Ghostverfolger extends Ghost {
     return verfolgungsrichtung;
   }
 
-    @Override
-  public void movement() {
+    
+  public void movement1() {
   CompassDirection d= verfolger();
   
 
@@ -33,7 +33,7 @@ public class Ghostverfolger extends Ghost {
    
     }
     else {
-        Richtung();
+        movement();
     }
   }
 
