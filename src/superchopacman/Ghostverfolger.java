@@ -9,33 +9,30 @@ import ch.aplu.jgamegrid.Location;
  */
 public class Ghostverfolger extends Ghost {
 
-  public Ghostverfolger(Runner runner, Spielfeld feld) {
-    super(runner, feld, "sprites/ghostverfolger.png");
-    this.runner = runner;
-    this.feld = feld;
-  }
+    public Ghostverfolger(Runner runner, Spielfeld feld) {
+        super(runner, feld, "sprites/ghostverfolger.png");
+        this.runner = runner;
+        this.feld = feld;
+    }
 
- 
-  public CompassDirection verfolger() {
-    Location pac = runner.getLocation();
-    CompassDirection verfolgungsrichtung = this.getLocation().get4CompassDirectionTo(pac);
-    return verfolgungsrichtung;
-  }
+    public CompassDirection verfolger() {
+        Location pac = runner.getLocation();
+        CompassDirection verfolgungsrichtung = this.getLocation().get4CompassDirectionTo(pac);
+        return verfolgungsrichtung;
+    }
 
     @Override
-  public void movement() {
-  CompassDirection d= verfolger();
-  
+    public void movement() {
+        CompassDirection d = verfolger();
 
-    if (canMove(getLocation().getNeighbourLocation(verfolger()))) {
-      setDirection(d);
-        move();
-   
+
+        if (canMove(getLocation().getNeighbourLocation(verfolger()))) {
+            setDirection(d);
+            move();
+
+        } else { 
+           super.movement();
+      
     }
-    else {
-        Richtung();
-    }
-  }
-
-
-  }
+}
+}
