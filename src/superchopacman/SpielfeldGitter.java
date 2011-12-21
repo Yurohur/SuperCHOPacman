@@ -76,8 +76,8 @@ public class SpielfeldGitter {
             }
             //Fügt den zufällig laufenden Ghost ein
             if (c == 'G') {
-                spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/feuer.jpg"), new Location(spalte, zeile));
-                spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/feuer.jpg"), new Location(29 - spalte, zeile));
+                spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/ghost.gif"), new Location(spalte, zeile));
+                spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/ghost.gif"), new Location(29 - spalte, zeile));
             }
             //Fügt den Ghostverfolger ein
             if (c == 'V') {
