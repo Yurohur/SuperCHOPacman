@@ -19,7 +19,12 @@ public class Ghost extends Actor {
     this.runner = runner;
     this.feld = feld;
   }
-
+/**
+   * Überprüft, ob der nächste Pixel in Bewegungsrichtung eine Barriere 
+   * oder ein Teil des Labyrints ist-ob sich der Pacman dorthin bewegen darf. 
+   * @param loc
+   * @return true - false
+   */
   public boolean canMove(Location loc) {
     Color col = getBackground().getColor(loc);
     if (col.equals(Color.black)) {
@@ -50,7 +55,11 @@ public class Ghost extends Actor {
     }
   }
 
-  
+  /**
+   * Ruft canMove auf. wenn der Pacman sich bewegen darf,
+   * geht er einen Schritt. Wenn er sich nicht bewegen darf, wird die Funktion
+   * Richtung neu aufgerufen.
+   */
 
   public void movement() {
 
@@ -65,8 +74,8 @@ public class Ghost extends Actor {
   }
 
   /**
-   * Vergleicht die Positionen vom Ghost und Runner und zieht dem Runner ein Leben wenn die
-   * Positionen übereinstimmen
+   * Vergleicht die Positionen vom Ghost und Runner und zieht dem Runner ein Leben ab
+   * wenn die Positionen übereinstimmen
    */
   public void pacmanfressen() {
     Location loc = this.getLocation();
@@ -77,6 +86,11 @@ public class Ghost extends Actor {
     }
   }
 
+  /**
+   * Führt den Ghost aus. Erhöht den Zähler um 1. Macht einen Fressversuch
+   * Führt die Funktion movement aus.
+   */
+  
   @Override
   public void act() {
     zaehler += 1;
