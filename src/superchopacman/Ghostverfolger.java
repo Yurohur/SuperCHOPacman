@@ -9,7 +9,7 @@ import ch.aplu.jgamegrid.Location;
 public class Ghostverfolger extends Ghost {
 
     public Ghostverfolger(Runner runner, Spielfeld feld) {
-        super(runner, feld, "sprites/ghostverfolger.png");
+        super(runner, feld, "sprites/ghost.gif");
         this.runner = runner;
         this.feld = feld;
     }
