@@ -15,7 +15,7 @@ public class Ghost extends Actor {
   protected int zaehler = 0;
 
   public Ghost(Runner runner, Spielfeld feld, String path) {
-    super(false, path );
+    super(false, path);
     this.runner = runner;
     this.feld = feld;
   }
