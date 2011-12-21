@@ -8,6 +8,9 @@ import java.io.*;
  */
 public final class LKonstanten {
 
+    /*
+     * Die Methode Einlesen liest das Labyrinth aus einer Textdatei. Diese wird dann zeilenweise in einen String geschrieben.
+     */
     public static String Einlesen(String Dateiname) {
         String Labyrinth = "";
 

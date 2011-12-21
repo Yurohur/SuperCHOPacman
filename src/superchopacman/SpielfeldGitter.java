@@ -11,6 +11,12 @@ import java.util.ArrayList;
  */
 public class SpielfeldGitter {
 
+    /*
+     * Die Größe des Spielfelds wird definiert, dafür gibt es eine horizontale und vertikale Größenangabe. 
+     * Die Größe wird in einem Integer gespeichert. 
+     * Die Liste Pillen wird hinzugefügt.
+     * Ein String mit dem Namen Labyrinth und ein Runner mit dem Namen runner wird deklariert.
+     */
     public final static int vKaestchen = 30;
     public final static int hKaestchen = 30;
     public int[][] a = new int[hKaestchen][vKaestchen];
@@ -18,6 +24,10 @@ public class SpielfeldGitter {
     private String Labyrinth;
     private Runner runner;
 
+    /*
+     * Die Methode SpielfeldGitter wird deklariert, wobei ihr die Parameter spielfeld, auswahl und der Hintergrund übergeben werden.
+     * Die if-Schleife ist für die Auswahl des Spielfeldes verantwortlich, wobei die Form des Labyrinths aus der Klasse LKonstanten stammt.
+     */
     public SpielfeldGitter(Spielfeld spielfeld, int auswahl, GGBackground bg) {
 
 
@@ -31,7 +41,9 @@ public class SpielfeldGitter {
 
 
 
-        //Konvertiert String in ArrayList
+        /*
+         * Konvertiert String in ArrayList
+         */
         for (int i = 0; i < vKaestchen; i++) {
             for (int k = 0; k < hKaestchen / 2; k++) {
                 a[i][k] = toInt(Labyrinth.charAt(15 * i + k));
@@ -67,6 +79,7 @@ public class SpielfeldGitter {
                 spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/feuer.jpg"), new Location(spalte, zeile));
                 spielfeld.addActor(new Ghost(runner, spielfeld, "sprites/feuer.jpg"), new Location(29 - spalte, zeile));
             }
+            //Fügt den Ghostverfolger ein
             if (c == 'V') {
                 spielfeld.addActor(new Ghostverfolger(runner, spielfeld), new Location(spalte, zeile));
                 spielfeld.addActor(new Ghostverfolger(runner, spielfeld), new Location(29 - spalte, zeile));
