@@ -4,48 +4,35 @@ import java.io.*;
 
 /**
  *
- * @author fastjech
+ * @author Christian Fastje
  */
 public final class LKonstanten {
 
-    public static String Labyrinth1() {
-        String Labyrinth1 = "";
+    public static String Einlesen(String Dateiname) {
+        String Labyrinth = "";
 
         try {
             String zeile;
             StringBuffer puffer = new StringBuffer();
-            FileReader filereader = new FileReader("Labyrinth1.txt");
+            FileReader filereader = new FileReader(Dateiname);
             BufferedReader reader = new BufferedReader(filereader);
             while ((zeile = reader.readLine()) != null) {
                 puffer.append(zeile);
             }
             reader.close();
-            Labyrinth1 = puffer.toString();
+            Labyrinth = puffer.toString();
         } catch (Exception leseFehler) {
             // leseFehler.printStackTrace(); 
             throw new RuntimeException("Fehler beim Einlesen der Labyrinth1 Textdatei", leseFehler);
         }
-        return Labyrinth1;
+        return Labyrinth;
     }
 
-    
-    public static String Labyrinth2() {
-        String Labyrinth2 = "";
+    public static String Labyrinth1() {
+        return Einlesen("Labyrinth1.txt");
+    }
 
-        try {
-            String zeile;
-            StringBuffer puffer = new StringBuffer();
-            FileReader filereader = new FileReader("Labyrinth2.txt");
-            BufferedReader reader = new BufferedReader(filereader);
-            while ((zeile = reader.readLine()) != null) {
-                puffer.append(zeile);
-            }
-            reader.close();
-            Labyrinth2 = puffer.toString();
-        } catch (Exception leseFehler) {
-            // leseFehler.printStackTrace(); 
-            throw new RuntimeException("Fehler beim Einlesen der Labyrinth2 Textdatei", leseFehler);
-        }
-        return Labyrinth2;
+    public static String Labyrinth2() {
+        return Einlesen("Labyrinth2.txt");
     }
 }

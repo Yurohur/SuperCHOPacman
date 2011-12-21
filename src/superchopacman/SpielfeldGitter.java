@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Christian
+ * @author Christian Fastje
  */
 public class SpielfeldGitter {
 
