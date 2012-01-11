@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Ole Schwiegert
+ * @author Hendrik Phillips, Ole Schwiegert, Christian Fastje
  */
 public class Spielfeld extends GameGrid {
 

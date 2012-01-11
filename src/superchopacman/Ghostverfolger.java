@@ -4,7 +4,7 @@ import ch.aplu.jgamegrid.Location.CompassDirection;
 import ch.aplu.jgamegrid.Location;
 
 /**
- *@author phillihe
+ *@author Hendrik Phillips
  */
 public class Ghostverfolger extends Ghost {
 

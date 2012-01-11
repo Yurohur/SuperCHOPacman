@@ -6,7 +6,7 @@ import ch.aplu.jgamegrid.Location;
 
 /**
  *
- * @author phillihe
+ * @author Hendrik Phillips
  */
 public class Ghost extends Actor {
 

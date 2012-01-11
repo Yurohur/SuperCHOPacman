@@ -2,7 +2,7 @@ package superchopacman;
 
 /**
  *
- * @author Ole Schwiegert
+ * @author Ole Schwiegert, Hendrik Phillips, Christian Fastje
  */
 public class SuperCHOPacman {
 
