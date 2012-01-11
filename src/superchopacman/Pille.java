@@ -9,7 +9,7 @@ import ch.aplu.jgamegrid.Actor;
 public class Pille extends Actor {
     
     public Pille() {
-        super("sprites/pille.GIF");
+        super("sprites/pille.png");
     }
     
 }

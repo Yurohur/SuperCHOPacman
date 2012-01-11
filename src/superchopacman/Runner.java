@@ -15,10 +15,25 @@ import java.util.ArrayList;
  */
 public class Runner extends Actor implements GGKeyListener {
     
+    /**
+     * Representiert die Anzahl der gefressenen Pillen
+     */
     private int nGefressen = 0;
+    /**
+     * Anzahl der Leben
+     */
     private int lifes = 3;
+    /**
+     * Instanz des Spielfeldes
+     */
     private Spielfeld feld;
+    /**
+     * Container, um die Positionen der Pillen zu ermitteln
+     */
     private ArrayList<Pille> pillen = new ArrayList<Pille>();
+    /**
+     * Gesamtzahl aller Pillen
+     */
     public int maxPillen = pillen.size()+1;
     
     /**
@@ -29,7 +44,7 @@ public class Runner extends Actor implements GGKeyListener {
      * Locations zu ermitteln und sie beim Fressen entfernen zu können.
      */
     public Runner(ArrayList<Pille> pillen, Spielfeld feld) {
-        super(false, "sprites/runner.jpg");
+        super(false, "sprites/runner.png");
         this.pillen = pillen;
         this.feld = feld;
     }
@@ -83,6 +98,11 @@ public class Runner extends Actor implements GGKeyListener {
         }
     }
     
+    /**
+     * Methode um die Zahl der gefressenen Pillen zu erhalten
+     * 
+     * @return nGefressen
+     */
     public int getnGefressen() {
         return nGefressen;
     }
