@@ -1,5 +1,7 @@
 package superchopacman;
 
+import gui.Mainmenue;
+
 /**
  *
  * @author Ole Schwiegert, Hendrik Phillips, Christian Fastje
@@ -7,8 +9,10 @@ package superchopacman;
 public class SuperCHOPacman {
 
     public static void main(String[] args) {
-        Spielfeld feld = new Spielfeld(1);
+        /**Spielfeld feld = new Spielfeld(1);
         feld.doRun();
-        feld.show();
+        feld.show();**/
+        Mainmenue menue = new Mainmenue();
+        menue.setVisible(true);
     }
 }

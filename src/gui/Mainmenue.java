@@ -1,10 +1,13 @@
 package gui;
 
+import superchopacman.Spielfeld;
+
 /**
  *
  * @author Ole Schwiegert
  */
 public class Mainmenue extends javax.swing.JFrame {
+    private Spielfeld feld;
 
     /** Creates new form Mainmenue */
     public Mainmenue() {
@@ -20,32 +23,69 @@ public class Mainmenue extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        ueberschrift = new javax.swing.JLabel();
+        startGame = new javax.swing.JButton();
+        endGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("SuperCHOPacman");
+        ueberschrift.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        ueberschrift.setText("SuperCHOPacman");
+
+        startGame.setText("Start");
+        startGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startGameActionPerformed(evt);
+            }
+        });
+
+        endGame.setText("Ende");
+        endGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endGameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addComponent(ueberschrift)
                 .addGap(92, 92, 92))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(startGame)
+                    .addComponent(endGame))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addComponent(ueberschrift)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(startGame)
+                .addGap(18, 18, 18)
+                .addComponent(endGame)
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void startGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startGameActionPerformed
+        feld = new Spielfeld(1);
+        this.setVisible(false);
+        feld.doRun();
+        feld.show();
+    }//GEN-LAST:event_startGameActionPerformed
+
+    private void endGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endGameActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_endGameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,7 +123,9 @@ public class Mainmenue extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton endGame;
+    private javax.swing.JButton startGame;
+    private javax.swing.JLabel ueberschrift;
     // End of variables declaration//GEN-END:variables
 
 }
